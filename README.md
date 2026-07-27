@@ -16,8 +16,20 @@ workflows/  可直接串行运行的固定处理流程
 ```
 python=3.11 requirements.txt
 ```
-
- `raster_mask_to_shapefile_arcpy.py` 依赖 ArcPy，需在 ArcGIS Pro 自带的 Python 环境中运行。
+## 环境需要
+beautifulsoup4
+numpy
+onnxruntime
+opencv-python
+openpyxl
+pandas
+Pillow
+requests
+shapely
+torch
+tqdm
+ultralytics
+PS:`raster_mask_to_shapefile_arcpy.py` 依赖 ArcPy，需在 ArcGIS Pro 自带的 Python 环境中运行。
 ml还需要 PyTorch、Ultralytics 或 ONNX Runtime。
 
 ## 栅格工具
