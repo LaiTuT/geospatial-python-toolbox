@@ -1,8 +1,6 @@
-# Geospatial Python Tools
+# Geospatial Python Tools（自用/use myself）
 
-一组用于 GeoTIFF、Shapefile、DEM/DSM、LiDAR EPT 与 YOLO 地理数据工作流的独立 Python 工具。脚本按领域组织，文件名统一使用小写 `snake_case`，可按需单独使用。
-
-> 当前版本完成了仓库与命名规范化。所有 Python/JSON 文件均通过静态语法检查，但部分历史脚本仍使用文件顶部的路径常量；运行前请先阅读对应脚本。涉及覆盖、删除或移动数据的工具应先在数据副本上验证。
+一组用于 GeoTIFF、Shapefile、DEM/DSM、LiDAR EPT等地理数据的 Python 插件和一套固定工作流。
 
 ## 目录结构
 
@@ -14,22 +12,13 @@ tools/
   lidar/    USGS EPT 检索与 DSM 生成
   misc/     非 GIS 专用辅助工具
 docs/       工作流草案与命名迁移表
-scripts/    仓库维护脚本
 workflows/  可直接串行运行的固定处理流程
 ```
-
-## 安装
-
-建议使用 Python 3.10+ 和 Conda 安装 GDAL，避免 Windows 下 `pip` 编译 GDAL 的常见问题：
-
-```bash
-conda create -n geospatial-tools python=3.11
-conda activate geospatial-tools
-conda install -c conda-forge gdal
-pip install -r requirements.txt
+python=3.11 requirements.txt
 ```
 
-只有 `raster_mask_to_shapefile_arcpy.py` 依赖 ArcPy，需在 ArcGIS Pro 自带的 Python 环境中运行。深度学习工具还需要 PyTorch、Ultralytics 或 ONNX Runtime，按具体脚本选择安装即可。
+ `raster_mask_to_shapefile_arcpy.py` 依赖 ArcPy，需在 ArcGIS Pro 自带的 Python 环境中运行。
+ml还需要 PyTorch、Ultralytics 或 ONNX Runtime。
 
 ## 栅格工具
 
@@ -69,7 +58,7 @@ python tools/raster/flatten_raster_files.py data/tree data/flat --extension .tif
 | `prune_dangling_lines.py` | 按节点拓扑和长度移除短悬挂线 | 函数/修改配置 |
 | `prune_line_loops.py` | 使用桥边检测识别并移除线网中的环 | 函数/修改配置 |
 
-## 机器学习工具
+## ml工具
 
 | 工具 | 作用 | 入口 |
 |---|---|---|
@@ -94,18 +83,9 @@ python tools/raster/flatten_raster_files.py data/tree data/flat --extension .tif
 | `extract_wechat_images.py` | 提取微信公众号历史或单篇文章中的图片 | CLI/网络 |
 
 ## 固定工作流
+1.山脊山谷线提取后处理
 
-山脊/山谷自动生成矢量线的完整清理流程已单独整理到 [`workflows/ridge_valley_vector_cleanup`](workflows/ridge_valley_vector_cleanup/README.md)。统一入口会按“短尾线 → 环 → 再次短尾线 → 字段清理”执行，并保留各阶段删除结果以便 GIS 复核。
-
-## 仓库检查
-
-无需安装 GDAL 即可执行基础检查：
-
-```bash
-python scripts/check_repository.py
-```
-
-旧文件名与新文件名的完整对应关系见 [docs/renaming.md](docs/renaming.md)。英文简介见 [README.en.md](README.en.md)。
+完整流程已单独整理到 [`workflows/ridge_valley_vector_cleanup`](workflows/ridge_valley_vector_cleanup/README.md)。
 
 ## 许可证
 
