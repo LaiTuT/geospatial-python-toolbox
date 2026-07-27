@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated data and local caches
+output/
+ept_cache/
+*_output/
+ept_matches.txt
+ept_scan_results.jsonl
+down_*.txt
+*.log
+
+# Large geospatial and model artifacts
+*.tif
+*.tiff
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.las
+*.laz
+*.onnx
+*.pt
+*.pth
+
+# Build and local test artifacts
+*.exe
+*.obj
+*.pdb
+test_read.json
+dsm_full_extent.json
+testc++.*

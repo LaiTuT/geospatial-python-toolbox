@@ -1,0 +1,12 @@
+beautifulsoup4
+numpy
+onnxruntime
+opencv-python
+openpyxl
+pandas
+Pillow
+requests
+shapely
+torch
+tqdm
+ultralytics

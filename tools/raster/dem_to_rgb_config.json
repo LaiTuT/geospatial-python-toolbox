@@ -1,0 +1,44 @@
+{
+    "_comment": "DEM to RGB 批量处理配置文件（与LInSAR渲染原理一致）",
+
+    "input_dir": "./data/input",
+    "output_dir": "./data/output",
+
+    "render_params": {
+        "azimuth":  -45.0,
+        "altitude": 45.0,
+        "zscale": 1.0,
+        "shade_boost": 1.0,
+        "colortable": "linsar",
+        "minz": null,
+        "maxz": null,
+        "nodata": null
+    },
+
+    "_help": {
+        "input_dir": "输入文件夹路径（存放待处理的 DEM TIF 文件）",
+        "output_dir": "输出文件夹路径（生成的 RGB 图像保存位置）",
+        "azimuth": "光源方位角（度），135 表示东南方向",
+        "altitude": "光源高度角（度），从地平线向上，45 为中等高度",
+        "zscale": "Z 方向缩放因子，>1 增强地形起伏，<1 减弱",
+        "shade_boost": "阴影增强因子，>1 增强明暗对比（推荐1.5-2.0用于YOLO训练）",
+        "colortable": "颜色表：linsar(LInSAR默认), terrain(地形), elevation(高程), dem(标准)",
+        "minz": "最小高程值，null 表示自动从数据计算",
+        "maxz": "最大高程值，null 表示自动从数据计算",
+        "nodata": "无效值，null 表示从文件读取"
+    },
+
+    "_colortable_options": {
+        "linsar": "LInSAR 默认配色（21级，浅黄绿→绿→黄→橙→棕→白→蓝，推荐用于YOLO训练）",
+        "terrain": "经典地形配色（绿-黄-棕-白）",
+        "elevation": "高程配色（蓝-绿-黄-红）",
+        "dem": "DEM 标准配色（类似 ArcGIS）"
+    },
+
+    "_usage_examples": [
+        "python dem_to_rgb.py --batch                                    # 使用配置文件批量处理",
+        "python dem_to_rgb.py --batch --input-dir D:/my_data            # 覆盖配置文件的输入路径",
+        "python dem_to_rgb.py --batch --zscale 2.0 --shade-boost 1.5    # 增强地形起伏和阴影对比",
+        "python dem_to_rgb.py input.tif output.png                       # 单文件模式"
+    ]
+}
