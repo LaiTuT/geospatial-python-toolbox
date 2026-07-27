@@ -15,6 +15,7 @@ tools/
   misc/     非 GIS 专用辅助工具
 docs/       工作流草案与命名迁移表
 scripts/    仓库维护脚本
+workflows/  可直接串行运行的固定处理流程
 ```
 
 ## 安装
@@ -91,6 +92,10 @@ python tools/raster/flatten_raster_files.py data/tree data/flat --extension .tif
 | `generate_dsm_from_ept.py` | 通过 EPT/PDAL 流程生成与目标 DEM 网格对齐的 DSM | 修改脚本配置 |
 | `sort_excel_rows.py` | 按指定列对 Excel 表格排序 | 修改脚本配置 |
 | `extract_wechat_images.py` | 提取微信公众号历史或单篇文章中的图片 | CLI/网络 |
+
+## 固定工作流
+
+山脊/山谷自动生成矢量线的完整清理流程已单独整理到 [`workflows/ridge_valley_vector_cleanup`](workflows/ridge_valley_vector_cleanup/README.md)。统一入口会按“短尾线 → 环 → 再次短尾线 → 字段清理”执行，并保留各阶段删除结果以便 GIS 复核。
 
 ## 仓库检查
 
