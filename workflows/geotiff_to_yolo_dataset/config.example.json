@@ -1,0 +1,37 @@
+{
+  "raster_dir": "./input/rasters",
+  "annotation_dir": "./input/annotations",
+  "annotation_type": "shp",
+  "output_dir": "./output",
+  "overwrite": false,
+  "annotation_name_suffixes": ["_buffer", "_cleaned", "_mask"],
+  "tile_size": 1024,
+  "overlap": 0,
+  "nodata": -9999,
+  "only_valid_tiles": true,
+  "compression": "LZW",
+  "minimum_area": 100.0,
+  "simplify_factor": 0.001,
+  "write_debug_masks": true,
+  "write_label_previews": true,
+  "verbose": false,
+  "shapefile": {
+    "class_field": "grid_code",
+    "buffer_pixels": 1.25,
+    "simplify_tolerance": 0.0,
+    "class_mask_values": {
+      "0": 255,
+      "1": 128
+    }
+  },
+  "mask": {
+    "class_mapping": {
+      "255": 0,
+      "128": 1
+    },
+    "single_pixel_width": 2.5
+  },
+  "validation_ratio": 0.2,
+  "random_seed": 42,
+  "class_names": ["ridge", "valley"]
+}

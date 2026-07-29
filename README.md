@@ -99,6 +99,10 @@ python tools/raster/flatten_raster_files.py data/tree data/flat --extension .tif
 
 完整流程已单独整理到 [`workflows/ridge_valley_vector_cleanup`](workflows/ridge_valley_vector_cleanup/README.md)。
 
+2.GeoTIFF 与 SHP/mask TIF 生成 YOLO 分割训练集
+
+完整流程位于 [`workflows/geotiff_to_yolo_dataset`](workflows/geotiff_to_yolo_dataset/README.md)，包含切片、按地理范围裁切标注、生成三通道图像、名称和数量核对、标签验证、训练/验证集拆分及 `dataset.yaml` 生成。
+
 ## 许可证
 
 本项目采用 [MIT License](LICENSE)。第三方软件（GDAL、ArcPy、PyTorch、Ultralytics 等）仍受各自许可证约束。
